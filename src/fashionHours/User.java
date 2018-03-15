@@ -1,13 +1,17 @@
 package fashionHours;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 import fashionHours.product.*;
+import fashionHours.shop.Shop;
 public class User {
 
 	private static final int MAX_CHARS_IN_PASS=8;
@@ -21,6 +25,7 @@ public class User {
 	private ArrayList<Order> orders;
 	private Address address;
 	private boolean isLoggedIn=false;
+	private static Shop shop;
 	
 	private enum Gender{
 		MALE, FEMALE
@@ -39,7 +44,7 @@ public class User {
 	}
 
 	
-	private void login() {
+	public void login() {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("EMAIL: ");
 		String email=null;
@@ -56,9 +61,11 @@ public class User {
 		}
 	}
 	
+	public void logout() {
+		isLoggedIn=false; 
+	}
 	
 	private boolean validatePhone(String ph) {
-		
 		return ph.matches("[0-9]+") && ph.length()==9;	
 	}
 	
@@ -168,6 +175,7 @@ public class User {
 	        if(validateEmailAddress(mail)) {
 	        	this.email=mail;
 	        	writeEmailInFile(this.email);
+	        	this.shop.addEmailToSet(this.email);
 	        	return true;
 	        }
 	    }while(!validateEmailAddress(mail));
@@ -175,17 +183,17 @@ public class User {
         return false;
    }
 	
-	private void writeEmailInFile(String email) throws IOException  {
-		File users=new File("D:\\FashionHours\\src\\fashionhours\\users.txt");
-		if(!users.exists()) {
-		  users.createNewFile();
+	private void writeEmailInFile(String email) {
+		File users=new File("users.txt");
+		try(FileWriter fw = new FileWriter("users.txt", true);
+			    BufferedWriter bw = new BufferedWriter(fw);
+			    PrintWriter out = new PrintWriter(bw))
+			{
+			out.println(email);
+		} catch (IOException e) {
+		    //exception handling left as an exercise for the reader
 		}
-		
-		PrintStream ps=new PrintStream(users);
-		
-		ps.println(email);
-		
-		}
+	}
 	
 	private boolean enterPhone() {
 		Scanner sc=new Scanner(System.in);
@@ -222,6 +230,7 @@ public class User {
 				}
 				if(methodInvokeCounter==2) {
 					this.lastName=name;
+					methodInvokeCounter=1;
 					return true;
 				}
 				
@@ -289,7 +298,27 @@ public class User {
 		//enterAndValidateGender();
 	}
 	
+	public void changeName() {
+		enterName();
+	    if(enterName()) {
+	    	System.out.println("Your name has been changed.");
+	    }
+	}
 	
+	public void changePassword() {
+		Scanner sc=new Scanner(System.in);
+		String pass=null;
+		do {
+			System.out.println("Old password: ");
+			pass=sc.nextLine();
+			if(pass.equals(this.password)) {
+				System.out.println("Set new password");
+				enterPassword();
+				System.out.println("Your password has been changed.");
+				break;
+			}
+		}while(!pass.equals(this.password));
+	}
 	
 	//getters
 	public String getFirstName() {
