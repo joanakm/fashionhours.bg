@@ -31,8 +31,8 @@ public class User {
 		MALE, FEMALE
 	}
 	
-    public User() {
-		
+    public User(Shop s) {
+		this.shop=s;
 	}
 	private User( String email, String phone, Address address) {
 		
@@ -173,27 +173,18 @@ public class User {
 	        System.out.println("Please, enter your email address: ");
 	        mail=sc.nextLine();
 	        if(validateEmailAddress(mail)) {
-	        	this.email=mail;
-	        	writeEmailInFile(this.email);
-	        	this.shop.addEmailToSet(this.email);
-	        	return true;
+	        	if(this.shop.canRegister(mail)) {
+	        		this.email=mail;
+	        		this.shop.addEmailToSet(this.email);
+		        	return true;
+	        	}else {
+	        		enterEmailAddress();
+	        	}
 	        }
 	    }while(!validateEmailAddress(mail));
         sc.close(); 
         return false;
    }
-	
-	private void writeEmailInFile(String email) {
-		File users=new File("users.txt");
-		try(FileWriter fw = new FileWriter("users.txt", true);
-			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw))
-			{
-			out.println(email);
-		} catch (IOException e) {
-		    //exception handling left as an exercise for the reader
-		}
-	}
 	
 	private boolean enterPhone() {
 		Scanner sc=new Scanner(System.in);
