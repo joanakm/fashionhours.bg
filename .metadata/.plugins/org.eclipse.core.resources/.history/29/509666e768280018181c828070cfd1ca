@@ -1,0 +1,23 @@
+package fashionHours;
+
+import java.io.IOException;
+import java.util.Random;
+
+
+public class Demo {
+
+	//return random value between min and max INCLUSIVE
+		public static int random(int min, int max) {
+			return new Random().nextInt(max-min+1) + min;
+		}
+	
+	public static void main(String[] args) throws IOException {
+		User u = new User();
+		u.register();
+		System.out.println(u.getEmail());
+		
+        User u2=new User();
+        u2.register();
+	}
+	
+}

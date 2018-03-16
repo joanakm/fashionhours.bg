@@ -1,0 +1,10 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		String s = "NEXT Esprit Zee Lane Pepe Jeans London Puma Guess Diesel DESIGUAL Calvin Klein Zee Lane Collection Asics Converse Ted Baker Fossil Zee Lane Denim Liu Jo Nike Adidas ORIGINALS Le Coq Sportif Love Moschino";
+	 s = s.replaceAll(" ","," );
+		System.out.println(s.toUpperCase());
+	}
+}

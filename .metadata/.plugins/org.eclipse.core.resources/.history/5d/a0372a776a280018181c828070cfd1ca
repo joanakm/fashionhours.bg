@@ -1,0 +1,40 @@
+package fashionHours;
+
+import java.io.IOException;
+import java.util.Random;
+
+import fashionHours.product.Clothing;
+import fashionHours.product.Product;
+import fashionHours.product.Shoes;
+import fashionHours.shop.Shop;
+import fashionHours.product.Product.Brand;
+import fashionHours.product.Product.SizeClothes;
+
+
+public class Demo {
+
+	//return random value between min and max INCLUSIVE
+		public static int random(int min, int max) {
+			return new Random().nextInt(max-min+1) + min;
+		}
+	
+	public static void main(String[] args) throws IOException {
+		User u = new User();
+		u.register();
+		System.out.println(u.getEmail());
+		
+        User u2=new User();
+        u2.register();
+        
+
+        Shop fashionHours = Shop.createShop();
+        
+		Product bluza = new Clothing(Brand.ESPRIT, "Блуза с дантела", 59.90, SizeClothes.S);
+		Product kecove = new Shoes(Brand.CONVERSE, "Класически кецове", 37, 102.85);
+		//bluza.addToShop();
+		//bluza.removeFromShop();
+		
+		System.out.println(bluza);
+	}
+	
+}

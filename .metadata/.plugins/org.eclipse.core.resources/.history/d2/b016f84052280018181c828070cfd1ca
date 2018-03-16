@@ -1,0 +1,25 @@
+package fashionHours.product;
+
+public class Product {
+
+	enum TypeProduct{
+		CLOTHES,SHOES,ACCSSESORIES,BAGS
+	}
+	
+	enum Brand{
+		NEXT,ESPRIT,ZEE,LANE,PEPE,JEANS,LONDON,PUMA,GUESS,DIESEL,DESIGUAL,CALVIN,KLEIN,
+		COLLECTION,ASICS,CONVERSE,TED,BAKER,FOSSIL,DENIM,LIU,JO,NIKE,ADIDAS,ORIGINALS,LE,
+		COQ,SPORTIF,LOVE,MOSCHINO
+	}
+	
+	enum Size{
+		XS,S,M,L,XL,35,36,37,38,39,40,41,42,43,44,45,46,47,48
+	}
+	
+	private Brand brand;
+	private TypeProduct product;
+	private String description;
+	private Size size;
+
+	
+}

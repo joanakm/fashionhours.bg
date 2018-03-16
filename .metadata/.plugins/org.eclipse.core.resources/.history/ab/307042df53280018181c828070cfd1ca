@@ -1,0 +1,10 @@
+package fashionHours.product;
+
+public class Clothing extends Product {
+
+	public Clothing(Brand brand, TypeProduct product, String description, SizeClothes sizeClothes, int sizeShoes) {
+		super(brand, product, description, sizeClothes, sizeShoes);
+		// TODO Auto-generated constructor stub
+	}
+
+}

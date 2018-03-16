@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 
 import fashionHours.product.*;
+import fashionHours.shop.Cart;
 import fashionHours.shop.Shop;
 public class User {
 
@@ -26,6 +27,7 @@ public class User {
 	private Address address;
 	private boolean isLoggedIn=false;
 	private static Shop shop;
+	private double money;
 	
 	private enum Gender{
 		MALE, FEMALE
@@ -40,6 +42,7 @@ public class User {
 		this.phone = phone;
 		this.orders = new ArrayList<>();
 		this.address = address;
+		this.money = 2000;
 		
 	}
 
@@ -332,6 +335,10 @@ public class User {
 	public Gender getGender() {
 		return this.gender;
 	}
+	
+	public double getMoney() {
+		return money;
+	}
 	//end of getters
 	
 	//setters
@@ -342,6 +349,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void setMoney(double money) {
+		this.money = money;
+	}
 	//end of setters
+	
 }
 	

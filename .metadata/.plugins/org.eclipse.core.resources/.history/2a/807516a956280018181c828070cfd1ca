@@ -1,0 +1,27 @@
+package fashionHours.product;
+
+public class Clothing extends Product {
+
+
+	private SizeClothes size;
+	
+	public Clothing(Brand brand, TypeProduct product, String description, double price, SizeClothes size) {
+		super(brand, product, description, price);
+		this.size = size;
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Clothing [size=" + size + "]";
+	}
+
+
+	
+	
+
+
+
+	
+	
+}

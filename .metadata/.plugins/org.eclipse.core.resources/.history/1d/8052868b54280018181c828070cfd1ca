@@ -1,0 +1,11 @@
+package fashionHours.product;
+
+public class Clothing extends Product {
+
+	public Clothing(Brand brand, String description, SizeClothes sizeClothes) {
+		super(brand, TypeProduct.CLOTHES, description, sizeClothes, (Integer) null);
+		
+		
+	}
+
+}
