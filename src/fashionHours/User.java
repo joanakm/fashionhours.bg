@@ -35,6 +35,7 @@ public class User {
 	
     public User(Shop s) {
 		this.shop=s;
+		this.addresses = new HashMap();
 	}
 	private User( String email, String phone, Address address) {
 		
@@ -61,6 +62,7 @@ public class User {
 				}
 			}
 		}
+		sc.close();
 	}
 	
 	public void logout() {
@@ -267,7 +269,7 @@ public class User {
 				break;
 			}
 		}
-		
+		sc.close();
 	}
 	
 	public void addAddress() {
@@ -275,29 +277,33 @@ public class User {
 		String city=null;
 		do {
 		   System.out.println("Please, enter your city: ");
-		   city=sc.nextLine();
+		   city=sc.nextLine().toUpperCase();
 		}while(!this.shop.getCities().contains(city));
-		System.out.println("Please, enter your street: ");
+		System.out.println("Please, enter your street and number: ");
 		String street=sc.nextLine();
 		this.addresses.put(city, street);
+		sc.close();
 	}
 	
 	public void register() {
 		//enter and validate first and last names
-		enterName();
-		enterName();
+		//enterName();
+		//enterName();
 		
 		//enter and validate password
-		enterPassword();
+		//enterPassword();
 		
 		//enter and validate email
-		enterEmailAddress();
+		//enterEmailAddress();
 		
 		//enter and validate phone
-	    enterPhone();
+	    //enterPhone();
 		
 		//enter and validate gender
-		enterAndValidateGender();
+		//enterAndValidateGender();
+		
+		//add address
+		addAddress();
 	}
 	
 	
@@ -322,9 +328,14 @@ public class User {
 				break;
 			}
 		}while(!pass.equals(this.password));
+		sc.close();
 	}
 	
 	//getters
+	public Map<String, String> getAddresses() {
+		return addresses;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
