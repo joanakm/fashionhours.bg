@@ -7,8 +7,7 @@ import fashionHours.shop.Shop;
 
 public class Demo {
 
-	public static void main(String[] args) throws IOException {
-		
+	public static void main(String[] args) {
 		Shop s=new Shop();
 		User u = new User(s);
 		u.register();

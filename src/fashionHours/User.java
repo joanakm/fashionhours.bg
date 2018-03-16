@@ -166,7 +166,7 @@ public class User {
 		return hasDigit;
 	}
 	
-	private boolean enterEmailAddress() throws IOException {
+	private boolean enterEmailAddress() {
         Scanner sc=new Scanner(System.in);
         String mail=null;
         do {
@@ -268,25 +268,22 @@ public class User {
 		
 	}
 	
-	public void register() throws IOException {
-		
-		
+	public void register() {
 		//enter and validate first and last names
-		//enterName();
-		//enterName();
+		enterName();
+		enterName();
 		
 		//enter and validate password
-		//enterPassword();
+		enterPassword();
 		
 		//enter and validate email
 		enterEmailAddress();
 		
-		
 		//enter and validate phone
-		//enterPhone();
+	    enterPhone();
 		
 		//enter and validate gender
-		//enterAndValidateGender();
+		enterAndValidateGender();
 	}
 	
 	public void changeName() {
