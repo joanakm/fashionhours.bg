@@ -31,6 +31,13 @@ public class Shop {
 			addCities();
 		}
 	
+		public static Shop createShop() { 
+            if(shop == null) { 
+                 shop = new Shop();	 
+			} 
+			return shop; 
+         } 
+		
 	public Set<String> getCities(){
 		return this.cities;
 	}
@@ -153,7 +160,7 @@ public class Shop {
 			{
 			out.println(email);
 		} catch (IOException e) {
-		    //exception handling left as an exercise for the reader
+			e.printStackTrace();
 		}
 	}
 	
