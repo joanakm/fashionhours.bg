@@ -14,6 +14,9 @@ public class Demo {
 		
 		Shop shop = Shop.createShop();
 		User u=new User(shop);
+		u.register();
+	    System.out.println(u);
+	    System.out.println();
 		Product blouse = new Clothing(Brand.DENIM, ForGender.WOMAN, KindClothes.BLOUSES, "Pinky blouse", 14.99, SizeClothes.S);
 		
 		Product sneakers = new Shoes(Brand.CONVERSE, ForGender.MAN, KindShoes.SPORT, "Classic sport shoes", 85, 43); 
@@ -39,7 +42,6 @@ public class Demo {
 	    System.out.println("======= total cost of the cart ======="); 
 		cart.totalCost(); 
 	
-	   	shop.printCities(); 
 
 	}	
 	

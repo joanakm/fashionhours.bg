@@ -9,8 +9,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import org.omg.Messaging.SyncScopeHelper;
 
 import fashionHours.product.*;
 import fashionHours.shop.Shop;
@@ -241,7 +243,8 @@ public class User {
 		while(true) {
 			boolean valid=false;
 			System.out.println("Please, enter your gender: ");
-			gender=sc.nextLine().toLowerCase();
+			gender=sc.nextLine().toLowerCase().trim();
+			
 			switch (gender){
 			case "female": {
 				this.gender=Gender.FEMALE;
@@ -287,26 +290,26 @@ public class User {
 	
 	public void register() {
 		//enter and validate first and last names
-		//enterName();
-		//enterName();
+		enterName();
+		enterName();
 		
 		//enter and validate password
-		//enterPassword();
-		
-		//enter and validate email
-		//enterEmailAddress();
-		
-		//enter and validate phone
-	    //enterPhone();
+		enterPassword();
 		
 		//enter and validate gender
-		//enterAndValidateGender();
+		enterAndValidateGender();
+						
+		//enter and validate email
+		enterEmailAddress();
+		
+		//enter and validate phone
+	    enterPhone();
 		
 		//add address
 		addAddress();
+		
+		System.out.println("Welcome to FashionHours!");
 	}
-	
-	
 	
 	public void changeName() {
 		enterName();
@@ -331,44 +334,18 @@ public class User {
 		sc.close();
 	}
 	
-	//getters
-	public Map<String, String> getAddresses() {
-		return addresses;
+	@Override
+	public String toString() {
+		StringBuilder sb=new StringBuilder();
+		sb.append("First name: "+firstName+"\n");
+		sb.append("Last name: "+lastName+"\n");
+		sb.append("Email address: "+email+"\n");
+		sb.append("Gender: "+gender+"\n");
+		sb.append("===Addresses===\n");
+		sb.append(addresses);
+		
+		return sb.toString();
 	}
 	
-	public String getFirstName() {
-		return firstName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-	
-	public String getPhone() {
-		return this.phone;
-	}
-	
-	public Gender getGender() {
-		return this.gender;
-	}
-	//end of getters
-	
-	//setters
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	//end of setters
 }
 	
