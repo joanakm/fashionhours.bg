@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -24,7 +26,7 @@ public class User {
 	private String password;
 	private String phone;
 	private ArrayList<Order> orders;
-	private Address address;
+	private Map<String,String> addresses;
 	private boolean isLoggedIn=false;
 	private static Shop shop;
 	private double money;
@@ -41,8 +43,9 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.orders = new ArrayList<>();
-		this.address = address;
+		//this.address = address;
 		this.money = 2000;
+		this.addresses = new HashMap();
 		
 	}
 
@@ -271,6 +274,18 @@ public class User {
 		
 	}
 	
+	public void addAddress() {
+		Scanner sc=new Scanner(System.in);
+		String city=null;
+		do {
+		   System.out.println("Please, enter your city: ");
+		   city=sc.nextLine();
+		}while(!this.shop.getCities().contains(city));
+		System.out.println("Please, enter your street: ");
+		String street=sc.nextLine();
+		this.addresses.put(city, street);
+	}
+	
 	public void register() {
 		//enter and validate first and last names
 		enterName();
@@ -288,6 +303,8 @@ public class User {
 		//enter and validate gender
 		enterAndValidateGender();
 	}
+	
+	
 	
 	public void changeName() {
 		enterName();

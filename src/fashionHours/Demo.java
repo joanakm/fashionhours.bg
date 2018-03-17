@@ -7,6 +7,7 @@ import fashionHours.shop.*;
 public class Demo {
 
 	public static void main(String[] args) {
+
 		Shop shop = Shop.createShop();
 		User u = new User(shop);
 		//u.register();
@@ -41,7 +42,8 @@ public class Demo {
 		cart.totalCost();
 
 		
-	
+		shop.printCities();
+
 	}
 	
 }
