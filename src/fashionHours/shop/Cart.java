@@ -67,6 +67,5 @@ public class Cart {
 		this.totalCost=totalCost;
 		System.out.print("Cost:"+totalCost);
 	}
-	
-	
+
 }

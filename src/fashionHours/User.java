@@ -1,6 +1,7 @@
 package fashionHours;
 
 import java.io.BufferedWriter;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,8 +10,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import org.omg.Messaging.SyncScopeHelper;
 
 import fashionHours.product.*;
 import fashionHours.shop.Cart;
@@ -37,6 +40,7 @@ public class User {
 	
     public User(Shop s) {
 		this.shop=s;
+		this.addresses = new HashMap();
 	}
 	private User( String email, String phone, Address address) {
 		
@@ -65,6 +69,7 @@ public class User {
 				}
 			}
 		}
+		sc.close();
 	}
 	
 	public void logout() {
@@ -243,7 +248,8 @@ public class User {
 		while(true) {
 			boolean valid=false;
 			System.out.println("Please, enter your gender: ");
-			gender=sc.nextLine().toLowerCase();
+			gender=sc.nextLine().toLowerCase().trim();
+			
 			switch (gender){
 			case "female": {
 				this.gender=Gender.FEMALE;
@@ -271,7 +277,7 @@ public class User {
 				break;
 			}
 		}
-		
+		sc.close();
 	}
 	
 	public void addAddress() {
@@ -279,11 +285,12 @@ public class User {
 		String city=null;
 		do {
 		   System.out.println("Please, enter your city: ");
-		   city=sc.nextLine();
+		   city=sc.nextLine().toUpperCase();
 		}while(!this.shop.getCities().contains(city));
-		System.out.println("Please, enter your street: ");
+		System.out.println("Please, enter your street and number: ");
 		String street=sc.nextLine();
 		this.addresses.put(city, street);
+		sc.close();
 	}
 	
 	public void register() {
@@ -294,17 +301,20 @@ public class User {
 		//enter and validate password
 		enterPassword();
 		
+		//enter and validate gender
+		enterAndValidateGender();
+						
 		//enter and validate email
 		enterEmailAddress();
 		
 		//enter and validate phone
 	    enterPhone();
 		
-		//enter and validate gender
-		enterAndValidateGender();
+		//add address
+		addAddress();
+		
+		System.out.println("Welcome to FashionHours!");
 	}
-	
-	
 	
 	public void changeName() {
 		enterName();
@@ -326,37 +336,26 @@ public class User {
 				break;
 			}
 		}while(!pass.equals(this.password));
+		sc.close();
 	}
 	
-	//getters
-	public String getFirstName() {
-		return firstName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public String getPassword() {
-		return password;
+	@Override
+	public String toString() {
+		StringBuilder sb=new StringBuilder();
+		sb.append("First name: "+firstName+"\n");
+		sb.append("Last name: "+lastName+"\n");
+		sb.append("Email address: "+email+"\n");
+		sb.append("Gender: "+gender+"\n");
+		sb.append("===Addresses===\n");
+		sb.append(addresses);
+		
+		return sb.toString();
 	}
 
-	public String getEmail() {
-		return email;
-	}
-	
-	public String getPhone() {
-		return this.phone;
-	}
-	
-	public Gender getGender() {
-		return this.gender;
-	}
 	
 	public double getMoney() {
 		return money;
 	}
-	//end of getters
 	
 	//setters
 	public void setEmail(String email) {
@@ -372,5 +371,6 @@ public class User {
 	}
 	//end of setters
 	
+	//public void makeOrder()
 }
 	

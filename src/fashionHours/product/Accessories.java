@@ -6,9 +6,5 @@ public class Accessories extends Product {
 		super(brand, gender, TypeProduct.ACCSSESORIES, description, price);
 		
 	}
-
-	
-
-	
 	
 }

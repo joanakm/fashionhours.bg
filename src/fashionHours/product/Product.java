@@ -1,5 +1,6 @@
 package fashionHours.product;
 
+
 import fashionHours.shop.Shop;
 
 public abstract class Product{

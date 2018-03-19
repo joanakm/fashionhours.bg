@@ -1,16 +1,22 @@
 package fashionHours.shop;
 
 import java.io.BufferedWriter;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import fashionHours.product.Product;
+import java.util.Collection;
 
+import fashionHours.product.Product;
 
 public class Shop {
 
@@ -33,7 +39,7 @@ public class Shop {
 		}
 		return shop;
 	}
-	
+		
 	public Set<String> getCities(){
 		return this.cities;
 	}
@@ -156,7 +162,7 @@ public class Shop {
 			{
 			out.println(email);
 		} catch (IOException e) {
-		    //exception handling left as an exercise for the reader
+			e.printStackTrace();
 		}
 	}
 	
@@ -172,8 +178,7 @@ public class Shop {
 		}
 		return true;
 	}
-	
-	//====================================================
+
 	public HashMap<Integer, Product> getProductsInShop() {
 		return productsInShop;
 	}
