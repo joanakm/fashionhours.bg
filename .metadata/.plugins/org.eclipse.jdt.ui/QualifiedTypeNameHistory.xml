@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="fashionHours.product.Clothing"/>
-<fullyQualifiedTypeName name="fashionHours.product.Product.SizeClothes"/>
-<fullyQualifiedTypeName name="fashionHours.product.Product.TypeProduct"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Observer"/>
+<fullyQualifiedTypeName name="java.nio.file.attribute.UserPrincipalLookupService"/>
+<fullyQualifiedTypeName name="fashionHours.observer.Observer"/>
+<fullyQualifiedTypeName name="fashionHours.observer.Observable"/>
+<fullyQualifiedTypeName name="fashionHours.User"/>
 <fullyQualifiedTypeName name="fashionHours.product.Product"/>
 <fullyQualifiedTypeName name="fashionHours.product.Shoes"/>
-<fullyQualifiedTypeName name="fashionHours.product.Product.Brand"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="fashionHours.shop.Shop"/>
+<fullyQualifiedTypeName name="fashionHours.product.Product.ForGender"/>
+<fullyQualifiedTypeName name="fashionHours.product.Product.KindShoes"/>
 </qualifiedTypeNameHistroy>

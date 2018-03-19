@@ -1,5 +1,0 @@
-package fashionHours.product;
-
-public class Clothing extends Product{
-
-}
